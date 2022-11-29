@@ -26,6 +26,7 @@ jobs:
         run: |
           sudo apt install build-essential libboost-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev liblua5.1-0-dev libprotobuf-dev libshp-dev libsqlite3-dev protobuf-compiler rapidjson-dev
           git clone https://github.com/systemed/tilemaker -b master
+          mv ./resources/* ./tilemaker
           cd tilemaker
           make
           sudo make install
@@ -37,7 +38,6 @@ jobs:
           wget  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
           unzip  -o water-polygons-split-4326.zip
           mv ./water-polygons-split-4326/* ./coastline
-          mv ../resources/* ./
           cd ../
           ls -al
           cd tilemaker
