@@ -34,7 +34,7 @@ jobs:
           sudo mkdir -p ./coastline && sudo -E chmod 777 ./coastline
           sudo mkdir -p ./TilesOut && sudo -E chmod 777 ./TilesOut
           wget  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
-          cp water-polygons-split-4326.zip /coastline 
+          cp water-polygons-split-4326.zip ./coastline 
           # curl -o coastline/water-polygons-split-4326.zip  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
           cd ./coastline
           unzip water-polygons-split-4326.zip
