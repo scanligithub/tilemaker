@@ -5,7 +5,7 @@ on:
       file_URL:
         description: 'input https://download.bbbike.org/osm/extract/planet_109.799,36.874_123.121,43.457.osm.pbf osm file URL'
         required: true
-        default: 'https://download.bbbike.org/osm/extract/planet_109.799,36.874_123.121,43.457.osm.pbf'  
+        default: 'https://download.geofabrik.de/asia/china-latest.osm.pbf'  
 env:
   TZ: Asia/Shanghai
 
@@ -21,7 +21,7 @@ jobs:
           sudo ln -sf /bin/bash /bin/sh 
           sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
           chmod +x ./extern-disk-space.sh
-          # ./extern-disk-space.sh
+          ./extern-disk-space.sh
       - name: Download map file 
         run: |
           sudo apt install build-essential libboost-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev liblua5.1-0-dev libprotobuf-dev libshp-dev libsqlite3-dev protobuf-compiler rapidjson-dev
