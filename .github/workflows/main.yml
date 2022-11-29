@@ -20,6 +20,7 @@ jobs:
         run: |
           sudo ln -sf /bin/bash /bin/sh 
           sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
+          sudo mkdir -p /cache && sudo -E chmod 777 /cache
           chmod +x ./extern-disk-space.sh
           ./extern-disk-space.sh
       - name: Download map file 
@@ -43,7 +44,7 @@ jobs:
           ls -al
           cd tilemaker
           ls -al 
-          tilemaker --input custom.osm.pbf  --output TilesOut/ --config ./resources/config-openmaptiles.json --process ./resources/process-openmaptiles.lua --verbose
+          tilemaker --input custom.osm.pbf  --output TilesOut/ --config ./resources/config-openmaptiles.json --process ./resources/process-openmaptiles.lua ---store /cache
           
            
       - name: zip Tiles file
