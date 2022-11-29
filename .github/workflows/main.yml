@@ -29,6 +29,7 @@ jobs:
           cd tilemaker
           make
           sudo make install
+          df -h
           
           curl -o custom.osm.pbf '${{ github.event.inputs.file_URL }}'
           sudo mkdir -p ./coastline && sudo -E chmod 777 ./coastline
