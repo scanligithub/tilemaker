@@ -1,15 +1,17 @@
 # tilemaker
 create vector mbtiles use tilemaker
 # note:
-   map src:
+   map sources:
    
      1  https://download.geofabrik.de/asia/china-latest.osm.pbf
      
      2  https://extract.bbbike.org/
      
-    no in
+    when from:
     
      http://download.openstreetmap.fr/extracts/
+     
+     Throw:
      
      "Can't read shapefiles unless a bounding box is provided.
      Error: Process completed with exit code 1.
