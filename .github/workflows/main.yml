@@ -49,11 +49,7 @@ jobs:
           # If not being set, default to '--verbose'
           # extra: --threads 0 
           
-      - name: zip Tiles file
-        run: |
-          tar  cvzf - TilesOut/ | split -b 2040m - tiles-mbtiles.tar.gz.
-          mv tiles-mbtiles.tar.gz.* /UpReleaseArtifact
-          ls -al /UpReleaseArtifact
+
           
       - name: clear src release    #v1.0.0 is src
         uses: dev-drprasad/delete-tag-and-release@v0.2.0
