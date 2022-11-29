@@ -49,7 +49,8 @@ jobs:
           # If not being set, default to '--verbose'
           # extra: --threads 0 
           
-      - name: zip Tiles file   
+      - name: zip Tiles file
+        run: |
           tar  cvzf - TilesOut/ | split -b 2040m - tiles-mbtiles.tar.gz.
           mv tiles-mbtiles.tar.gz.* /UpReleaseArtifact
           ls -al /UpReleaseArtifact
