@@ -35,10 +35,9 @@ jobs:
           sudo mkdir -p ./coastline && sudo -E chmod 777 ./coastline
           sudo mkdir -p ./TilesOut && sudo -E chmod 777 ./TilesOut
           wget  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
-          unzip -l -o water-polygons-split-4326.zip -d ./coastline 
-          cd ./coastline
-          ls -al
-          cd ../
+          unzip  -o water-polygons-split-4326.zip
+          cp ./water-polygons-split-4326/*.* ./coastline
+          
           tilemaker --input custom.osm.pbf  --output TilesOut/ --config ../config-openmaptiles.json --process ../process-openmaptiles.lua --verbose
           
            
