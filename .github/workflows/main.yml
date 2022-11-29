@@ -23,11 +23,12 @@ jobs:
           sudo mkdir -p /coastline && sudo -E chmod 777 /coastline
           sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
           chmod +x ./extern-disk-space.sh
-          ./extern-disk-space.sh
+       #   ./extern-disk-space.sh
       - name: Download map file 
         run: |
           curl -o custom.osm.pbf '${{ github.event.inputs.file_URL }}'
-          curl -o coastline/water-polygons-split-4326.zip  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
+          wget -o coastline/water-polygons-split-4326.ziphttps://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
+          # curl -o coastline/water-polygons-split-4326.zip  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
           cd /coastline
           unzip water-polygons-split-4326.zip
           rm water-polygons-split-4326.zip
