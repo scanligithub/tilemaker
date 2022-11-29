@@ -5,7 +5,7 @@ on:
       file_URL:
         description: 'input http://download.openstreetmap.fr/extracts/asia/china/anhui.osm.pbf osm file URL'
         required: true
-        default: 'http://download.openstreetmap.fr/extracts/asia/china/anhui.osm.pbf'  
+        default: 'https://download.geofabrik.de/asia/nepal-latest.osm.pbf'  
 env:
   TZ: Asia/Shanghai
 
@@ -41,7 +41,7 @@ jobs:
           ls -al
           cd ../
           ls -al
-          tilemaker --input custom.osm.pbf  --output TilesOut/  --verbose
+          tilemaker --input custom.osm.pbf  --output TilesOut/ --config ../config-openmaptiles.json --process ../process-openmaptiles.lua --verbose
           
            
       - name: zip Tiles file
