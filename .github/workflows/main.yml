@@ -28,7 +28,7 @@ jobs:
           git clone https://github.com/systemed/tilemaker -b master
           cd tilemaker
           make
-          make install
+          sudo make install
           
           curl -o custom.osm.pbf '${{ github.event.inputs.file_URL }}'
           sudo mkdir -p ./coastline && sudo -E chmod 777 ./coastline
