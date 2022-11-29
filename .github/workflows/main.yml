@@ -37,11 +37,12 @@ jobs:
           wget  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
           unzip  -o water-polygons-split-4326.zip
           mv ./water-polygons-split-4326/* ./coastline
+          mv ../resources/* ./
           cd ../
           ls -al
           cd tilemaker
           ls -al 
-          tilemaker --input custom.osm.pbf  --output TilesOut/ --config ../resources/config-openmaptiles.json --process ../resources/process-openmaptiles.lua --verbose
+          tilemaker --input custom.osm.pbf  --output TilesOut/ --config ./config-openmaptiles.json --process ./process-openmaptiles.lua --verbose
           
            
       - name: zip Tiles file
