@@ -40,8 +40,8 @@ jobs:
           cd ./coastline
           ls -al
           cd ../
-          
-          tilemaker --input custom.osm.pbf  --output TilesOut/ --config ../config-openmaptiles.json --process ../process-openmaptiles.lua --verbose
+          ls -al
+          tilemaker --input custom.osm.pbf  --output TilesOut/  --verbose
           
            
       - name: zip Tiles file
