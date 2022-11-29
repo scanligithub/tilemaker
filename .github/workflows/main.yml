@@ -43,7 +43,7 @@ jobs:
           ls -al
           cd tilemaker
           ls -al 
-          tilemaker --input custom.osm.pbf  --output TilesOut/ --config ./config-openmaptiles.json --process ./process-openmaptiles.lua --verbose
+          tilemaker --input custom.osm.pbf  --output TilesOut/ --config ./resources/config-openmaptiles.json --process ./resources/process-openmaptiles.lua --verbose
           
            
       - name: zip Tiles file
