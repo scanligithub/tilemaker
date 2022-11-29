@@ -19,27 +19,31 @@ jobs:
       - name: Initialization running environment
         run: |
           sudo ln -sf /bin/bash /bin/sh 
-          sudo mkdir -p /TilesOut && sudo -E chmod 777 /TilesOut
-          sudo mkdir -p /coastline && sudo -E chmod 777 /coastline
           sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
           chmod +x ./extern-disk-space.sh
-       #   ./extern-disk-space.sh
+          ./extern-disk-space.sh
       - name: Download map file 
         run: |
+          git clone https://github.com/systemed/tilemaker -b master
+          cd tilemaker
+          make
+          make install
+          
           curl -o custom.osm.pbf '${{ github.event.inputs.file_URL }}'
+          sudo mkdir -p ./coastline && sudo -E chmod 777 ./coastline
+          sudo mkdir -p ./TilesOut && sudo -E chmod 777 ./TilesOut
           wget  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
           cp water-polygons-split-4326.zip /coastline 
           # curl -o coastline/water-polygons-split-4326.zip  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
           cd /coastline
           unzip water-polygons-split-4326.zip
           rm water-polygons-split-4326.zip
-
-      - name: Run tilemaker
-        run: |
-          docker run -v $PWD:/srv  --rm stadtnavi/tilemaker:latest /srv/custom.osm.pbf --output=/srv/TilesOut 
+          tilemaker --input custom.osm.pbf  --output TilesOut/
+          
            
       - name: zip Tiles file
         run: |
+          cd tilemaker
           tar  cvzf - TilesOut/ | split -b 2040m - tiles-mbtiles.tar.gz.
           mv tiles-mbtiles.tar.gz.* /UpReleaseArtifact
           ls -al /UpReleaseArtifact
