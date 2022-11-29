@@ -24,6 +24,7 @@ jobs:
           ./extern-disk-space.sh
       - name: Download map file 
         run: |
+          sudo apt install build-essential libboost-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev liblua5.1-0-dev libprotobuf-dev libshp-dev libsqlite3-dev protobuf-compiler rapidjson-dev
           git clone https://github.com/systemed/tilemaker -b master
           cd tilemaker
           make
@@ -35,7 +36,7 @@ jobs:
           wget  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
           cp water-polygons-split-4326.zip /coastline 
           # curl -o coastline/water-polygons-split-4326.zip  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
-          cd /coastline
+          cd ./coastline
           unzip water-polygons-split-4326.zip
           rm water-polygons-split-4326.zip
           tilemaker --input custom.osm.pbf  --output TilesOut/
