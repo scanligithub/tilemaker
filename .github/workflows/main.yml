@@ -32,22 +32,7 @@ jobs:
           unzip water-polygons-split-4326.zip
           rm water-polygons-split-4326.zip
                   
-      - uses: systemed/tilemaker@v2.0.0
-      - name: Run tilemaker
-        with:
-          # Required, same to --input
-          input: custom.osm.pbf
-          # Required, same to --output. Could be a directory or a .mbtiles files
-          output: /TilesOut
-          # Optional, same to --config
-          # If not being set, default to resources/config-openmaptiles.config
-          config: config-openmaptiles.json
-          # Optional, same to --process
-          # If not being set, default to resources/process-openmaptiles.lua
-          process: process-openmaptiles.lua  
-          # Optional, other arguments
-          # If not being set, default to '--verbose'
-          # extra: --threads 0 
+
           
       - name: zip Tiles file
         run: |
