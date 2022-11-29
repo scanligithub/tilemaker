@@ -38,7 +38,7 @@ jobs:
           # curl -o coastline/water-polygons-split-4326.zip  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
           cd ./coastline
           unzip water-polygons-split-4326.zip
-          rm water-polygons-split-4326.zip
+          # rm water-polygons-split-4326.zip
           cd ../
           tilemaker --input custom.osm.pbf  --output TilesOut/ --config ../config-openmaptiles.json --process ../process-openmaptiles.lua
           
