@@ -33,23 +33,9 @@ jobs:
           rm water-polygons-split-4326.zip
 
       - name: Run tilemaker
-        uses: systemed/tilemaker@v2.0.0
-        with:
-          # Required, same to --input
-          input: custom.osm.pbf
-          # Required, same to --output. Could be a directory or a .mbtiles files
-          output: /TilesOut
-          # Optional, same to --config
-          # If not being set, default to resources/config-openmaptiles.config
-          config: config-openmaptiles.json
-          # Optional, same to --process
-          # If not being set, default to resources/process-openmaptiles.lua
-          process: process-openmaptiles.lua  
-          # Optional, other arguments
-          # If not being set, default to '--verbose'
-          # extra: --threads 0 
-
-          
+        run: |
+          docker run -v ./:/srv -it --rm stadtnavi/tilemaker:latest /srv/custom.osm.pbf --output=/srv/TilesOut 
+           
       - name: zip Tiles file
         run: |
           tar  cvzf - TilesOut/ | split -b 2040m - tiles-mbtiles.tar.gz.
