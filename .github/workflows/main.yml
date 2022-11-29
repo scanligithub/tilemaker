@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       file_URL:
-        description: 'input http://download.openstreetmap.fr/extracts/asia/china/anhui.osm.pbf osm file URL'
+        description: 'input https://download.bbbike.org/osm/extract/planet_109.799,36.874_123.121,43.457.osm.pbf osm file URL'
         required: true
-        default: 'https://download.geofabrik.de/asia/nepal-latest.osm.pbf'  
+        default: 'https://download.bbbike.org/osm/extract/planet_109.799,36.874_123.121,43.457.osm.pbf'  
 env:
   TZ: Asia/Shanghai
 
