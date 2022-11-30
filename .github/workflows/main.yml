@@ -40,10 +40,12 @@ jobs:
           sudo mkdir -p ./TilesOut && sudo -E chmod 777 ./TilesOut
           wget  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
           unzip  -o water-polygons-split-4326.zip
+          rm water-polygons-split-4326.zip
           mv ./water-polygons-split-4326/* ./coastline
           cd ./landcover
           wget https://naciscdn.org/naturalearth/packages/natural_earth_vector.zip
-          unzip  -o natural_earth_vector.zip     
+          unzip  -o natural_earth_vector.zip 
+          rm natural_earth_vector.zip
           cd ../
           ls -al 
           tilemaker --input custom.osm.pbf  --output TilesOut/output.mbtiles --config ./resources/config-openmaptiles.json --process ./resources/process-openmaptiles.lua --store /cache
