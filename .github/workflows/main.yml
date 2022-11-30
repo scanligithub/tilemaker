@@ -22,7 +22,7 @@ jobs:
           sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
           sudo mkdir -p /cache && sudo -E chmod 777 /cache
           chmod +x ./extern-disk-space.sh
-          # ./extern-disk-space.sh
+          ./extern-disk-space.sh
       - name: Buil tilemaker fetch maps generate mbtiles
         run: |
           sudo apt install build-essential libboost-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev liblua5.1-0-dev libprotobuf-dev libshp-dev libsqlite3-dev protobuf-compiler rapidjson-dev
@@ -47,11 +47,9 @@ jobs:
           wget https://naciscdn.org/naturalearth/packages/natural_earth_vector.zip
           unzip  -o natural_earth_vector.zip 
           rm natural_earth_vector.zip
-          ls -al
           cp ./10m_cultural/ne_10m_urban_areas.* ./landcover/ne_10m_urban_areas
           cp ./10m_physical/ne_10m_antarctic_ice_shelves_polys.* ./landcover/ne_10m_antarctic_ice_shelves_polys
           cp ./10m_physical/ne_10m_glaciated_areas.* ./landcover/ne_10m_glaciated_areas
-          ls -al 
           tilemaker --input custom.osm.pbf  --output TilesOut/output.mbtiles --config ./resources/config-openmaptiles.json --process ./resources/process-openmaptiles.lua --store /cache
           
            
