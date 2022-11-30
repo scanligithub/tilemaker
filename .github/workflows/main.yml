@@ -43,7 +43,7 @@ jobs:
           mv ./water-polygons-split-4326/* ./coastline
           wget https://naciscdn.org/naturalearth/packages/natural_earth_vector.zip
           unzip  -o natural_earth_vector.zip
-          mv ./natural_earth_vector.zip/* ./landcover          
+          mv ./natural_earth_vector/* ./landcover          
           cd ../
           ls -al
           cd tilemaker
