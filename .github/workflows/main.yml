@@ -48,9 +48,9 @@ jobs:
           unzip  -o natural_earth_vector.zip 
           rm natural_earth_vector.zip
           ls -al
-          cp natural_earth_vector/10m_cultural/ne_10m_urban_areas.* ./landcover/ne_10m_urban_areas
-          cp natural_earth_vector/10m_physical/ne_10m_antarctic_ice_shelves_polys.* ./landcover/ne_10m_antarctic_ice_shelves_polys
-          cp natural_earth_vector/10m_physical/ne_10m_glaciated_areas.* ./landcover/ne_10m_glaciated_areas
+          cp ./10m_cultural/ne_10m_urban_areas.* ./landcover/ne_10m_urban_areas
+          cp ./10m_physical/ne_10m_antarctic_ice_shelves_polys.* ./landcover/ne_10m_antarctic_ice_shelves_polys
+          cp ./10m_physical/ne_10m_glaciated_areas.* ./landcover/ne_10m_glaciated_areas
           ls -al 
           tilemaker --input custom.osm.pbf  --output TilesOut/output.mbtiles --config ./resources/config-openmaptiles.json --process ./resources/process-openmaptiles.lua --store /cache
           
