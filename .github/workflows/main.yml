@@ -36,15 +36,19 @@ jobs:
           
           curl -o custom.osm.pbf '${{ github.event.inputs.file_URL }}'
           sudo mkdir -p ./coastline && sudo -E chmod 777 ./coastline
+          sudo mkdir -p ./landcover && sudo -E chmod 777 ./landcover
           sudo mkdir -p ./TilesOut && sudo -E chmod 777 ./TilesOut
           wget  https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
           unzip  -o water-polygons-split-4326.zip
           mv ./water-polygons-split-4326/* ./coastline
+          wget https://naciscdn.org/naturalearth/packages/natural_earth_vector.zip
+          unzip  -o natural_earth_vector.zip
+          mv ./natural_earth_vector.zip/* ./landcover          
           cd ../
           ls -al
           cd tilemaker
           ls -al 
-          tilemaker --input custom.osm.pbf  --output TilesOut/ --config ./resources/config-openmaptiles.json --process ./resources/process-openmaptiles.lua ---store /cache
+          tilemaker --input custom.osm.pbf  --output TilesOut/ --config ./resources/config-openmaptiles.json --process ./resources/process-openmaptiles.lua --store /cache
           
            
       - name: zip Tiles file
