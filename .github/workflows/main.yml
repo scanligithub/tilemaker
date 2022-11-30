@@ -23,7 +23,7 @@ jobs:
           sudo mkdir -p /cache && sudo -E chmod 777 /cache
           chmod +x ./extern-disk-space.sh
           ./extern-disk-space.sh
-      - name: Download map file 
+      - name: Buil tilemaker fetch maps create mbtiles
         run: |
           sudo apt install build-essential libboost-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev liblua5.1-0-dev libprotobuf-dev libshp-dev libsqlite3-dev protobuf-compiler rapidjson-dev
           git clone https://github.com/systemed/tilemaker -b master
@@ -49,21 +49,21 @@ jobs:
           tilemaker --input custom.osm.pbf  --output TilesOut/ --config ./resources/config-openmaptiles.json --process ./resources/process-openmaptiles.lua --store /cache
           
            
-      - name: zip Tiles file
+      - name: zip mbtiles
         run: |
           cd tilemaker
           tar  cvzf - TilesOut/ | split -b 2040m - tiles-mbtiles.tar.gz.
           mv tiles-mbtiles.tar.gz.* /UpReleaseArtifact
           ls -al /UpReleaseArtifact
           
-      - name: clear src release    #v1.0.0 is src
+      - name: clear mbtiles release    #v1.0.0 is src
         uses: dev-drprasad/delete-tag-and-release@v0.2.0
         with:
           delete_release: true
           tag_name: v1.0.0   #v1.0.0 is src
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: release src    #v1.0.0 is src
+      - name: release mbtiles    #v1.0.0 is src
         uses: ncipollo/release-action@v1
         with:
           artifacts: "/UpReleaseArtifact/*"
