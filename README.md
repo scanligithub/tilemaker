@@ -1,5 +1,5 @@
 # tilemaker
-create vector mbtiles use tilemaker
+Generate vector mbtiles use tilemaker.   1G pbf file spend about 110 minis times.
 # note:
    map sources:
    
