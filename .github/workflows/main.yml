@@ -22,9 +22,16 @@ jobs:
           sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
           sudo mkdir -p /cache && sudo -E chmod 777 /cache
           chmod +x ./extern-disk-space.sh
-          ./extern-disk-space.sh
+          # ./extern-disk-space.sh
       - name: Buil tilemaker fetch maps generate mbtiles
         run: |
+          wget https://github.com/systemed/tilemaker/releases/download/v2.2.0/tilemaker-ubuntu-18.04.zip
+          unzip tilemaker-ubuntu-18.04.zip
+          cp ./buiild/* ./
+          cp ./resources ./
+          ls -al
+          chmod +x ./tilemaker
+          ./tilemaker --help
           sudo apt install build-essential libboost-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev liblua5.1-0-dev libprotobuf-dev libshp-dev libsqlite3-dev protobuf-compiler rapidjson-dev
           git clone https://github.com/systemed/tilemaker -b master
           ls -al
