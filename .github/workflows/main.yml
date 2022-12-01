@@ -22,21 +22,15 @@ jobs:
           sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
           sudo mkdir -p /cache && sudo -E chmod 777 /cache
           chmod +x ./extern-disk-space.sh
-          # ./extern-disk-space.sh
-      - name: Buil tilemaker fetch maps generate mbtiles
+          ./extern-disk-space.sh
+      - name: Fetch maps generate mbtiles
         run: |
           wget https://github.com/systemed/tilemaker/releases/download/v2.2.0/tilemaker-ubuntu-18.04.zip
           unzip tilemaker-ubuntu-18.04.zip
-          ls -al
           cp ./build/* ./
           cp ./resources/* ./
           chmod +x ./tilemaker
-          ls -al
-          ./tilemaker --help
-
-          
-          df -h
-          
+          ./tilemaker --help     
           curl -o custom.osm.pbf '${{ github.event.inputs.file_URL }}'
           sudo mkdir -p ./coastline && sudo -E chmod 777 ./coastline
           sudo mkdir -p ./landcover/ne_10m_urban_areas && sudo -E chmod 777 ./landcover/ne_10m_urban_areas
@@ -56,8 +50,7 @@ jobs:
           ls -al
           df -h
           ./tilemaker --input custom.osm.pbf  --output TilesOut/output.mbtiles --config ./resources/config-openmaptiles.json --process ./resources/process-openmaptiles.lua --store /cache
-          
-           
+             
       - name: Package mbtiles for release
         run: |
           tar  cvzf - TilesOut/output.mbtiles | split -b 2040m - tiles-mbtiles.tar.gz.
