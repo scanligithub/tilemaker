@@ -60,7 +60,6 @@ jobs:
            
       - name: Package mbtiles for release
         run: |
-          cd tilemaker
           tar  cvzf - TilesOut/output.mbtiles | split -b 2040m - tiles-mbtiles.tar.gz.
           mv tiles-mbtiles.tar.gz.* /UpReleaseArtifact
           ls -al /UpReleaseArtifact
