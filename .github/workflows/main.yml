@@ -27,6 +27,7 @@ jobs:
         run: |
           wget https://github.com/systemed/tilemaker/releases/download/v2.2.0/tilemaker-ubuntu-18.04.zip
           unzip tilemaker-ubuntu-18.04.zip
+          ls -al
           cp ./buiild/* ./
           cp ./resources ./
           ls -al
