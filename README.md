@@ -17,7 +17,9 @@ Generate vector mbtiles use tilemaker.   1G pbf file spend about 110 minis times
      Error: Process completed with exit code 1.
      "
 # use tiles-mbtiles
-root@node-1:/home/tileserver-gl# docker run --rm -it -v $(pwd):/data -p 9090:8080 scanlidocker/tileserver-gl-light:v4.2.0 --mbtiles ./data/tiles.mbtiles
+ tiles-mbtiles in ./data/tiles-mbtiles
+ docker run --rm -it -v $(pwd)/data:/data -p 9090:8080 scanlidocker/tileserver-gl-light:v4.2.0 
+ 
 
 # get tiles-mbtiles
 cat tiles-mbtiles.tar.gz.aa >> tiles-mbtiles.tar.gz
