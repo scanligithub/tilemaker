@@ -61,7 +61,6 @@ jobs:
         with:
           delete_release: true
           tag_name: v1.0.0   #v1.0.0 is src
-        env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}          
       - name: Release mbtiles    #v1.0.0 is src
         uses: ncipollo/release-action@v1
