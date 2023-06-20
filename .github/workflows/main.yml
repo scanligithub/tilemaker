@@ -57,7 +57,7 @@ jobs:
           mv tiles-mbtiles.tar.gz.* /UpReleaseArtifact
           ls -al /UpReleaseArtifact
       - name: Clear mbtiles release    #v1.0.0 is src
-        uses: dev-drprasad/delete-tag-and-release@v1.0
+        uses: dev-drprasad/delete-tag-and-release@v1.0.1
         with:
           delete_release: true
           tag_name: v1.0.0   #v1.0.0 is src
