@@ -1,6 +1,7 @@
 # tilemaker
 Generate vector mbtiles use tilemaker.   1G pbf file spend about 110 minis times.
-# Set settings-Actions->General->Workflow permissions->Read and Write permissions
+# Set settings
+settings>-Actions->General->Workflow permissions->Read and Write permissions
 # note:
    map sources:
    
